@@ -1,0 +1,43 @@
+<script>
+function calc(){
+
+let q = parseInt(document.getElementById("quickWeave").value);
+if(document.getElementById("quickDesign").checked) q += 5;
+document.getElementById("quickPrice").innerText="Price: $"+q;
+
+let k = parseInt(document.getElementById("knotless").value);
+if(document.getElementById("knotlessLen").checked) k += 5;
+document.getElementById("knotlessPrice").innerText="Price: $"+k;
+
+let b = parseInt(document.getElementById("boho").value);
+if(document.getElementById("bohoLen").checked) b += 5;
+document.getElementById("bohoPrice").innerText="Price: $"+b;
+
+}
+
+function saveBooking(event){
+
+let booking={
+name:document.getElementById("name").value,
+phone:document.getElementById("phone").value,
+date:document.getElementById("date").value
+};
+
+if(!booking.name || !booking.phone || !booking.date){
+event.preventDefault();
+alert("Please fill out name, phone, and date first.");
+return;
+}
+
+localStorage.setItem("booking",JSON.stringify(booking));
+
+setTimeout(()=>{
+window.location.href="confirm.html";
+},500);
+
+}
+
+document.querySelectorAll("select,input").forEach(e=>{
+e.addEventListener("change",calc);
+});
+</script>
