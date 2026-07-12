@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Confirm Booking</title>
+
+<style>
+body{
+background:#fbf3ef;
+font-family:Poppins,Arial;
+text-align:center;
+padding:50px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:20px;
+max-width:500px;
+margin:auto;
+}
+
+button{
+background:#ff5c9a;
+color:white;
+border:0;
+padding:15px;
+border-radius:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Confirm Your Booking 💕</h2>
+
+<p id="info"></p>
+
+<p>
+Send your $10 deposit to:
+<br>
+<a href="https://cash.app/$NaJahBurgess">
+$NaJahBurgess
+</a>
+</p>
+
+<button onclick="confirmBooking()">
+I Sent Deposit — Confirm Booking
+</button>
+
+</div>
+
+
+<script>
+
+let data=JSON.parse(localStorage.getItem("booking"));
+
+if(data){
+document.getElementById("info").innerHTML=
+"Name: "+data.name+
+"<br>Phone: "+data.phone+
+"<br>Date: "+data.date;
+}else{
+document.getElementById("info").innerHTML="No booking found.";
+}
+
+
+function confirmBooking(){
+
+alert("Booking confirmed! You will be contacted soon.");
+
+window.location.href="index.html";
+
+}
+
+</script>
+
+</body>
+</html>
